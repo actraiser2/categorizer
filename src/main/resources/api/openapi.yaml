@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: Categorizer
+  description: |-
+    Categorizer of movements
+  termsOfService: https://myvalue.com
+  contact:
+    email: jmbesada.juez@gmail.com
+  
+  version: 1..0
+servers:
+  - url: http://localhost:8080
+paths:
+  /movements/categorize:
+    post:
+      tags:
+        - Movements
+      summary: Categorize a movement
+      description: Categorize a movemrnt from all fields
+      operationId: categorizeMovement
+      requestBody:
+        description: Body Movemnt
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movement'
+          
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovementCategorized'          
+        '400':
+          description: Bad body
+        '404':
+          description: Pet not found
+        '422':
+          description: Validation exception
+      
+components:
+  schemas:
+    Movement:
+      type: object
+      required:
+        - concept
+        - amount
+        - institution
+      properties:
+        concept:
+          type: string
+          title: Concept of the movement
+          minLength: 3
+          maxLength: 100
+        amount:
+          type: number
+          title: Amount of the movement
+          minimum: 1
+        institution:
+          type: integer
+          title: Identification of the institution
+          minimum: 1
+    MovementCategorized:
+      type: object
+      required: 
+        - category
+        - categoryName
+      properties:
+        category:
+          type: integer
+          minimum: 1
+        categoryName:
+          type: string
+          minLength: 1
+          maxLength: 100
+        provider:
+          type: integer
+          minimum: 1
+        providerName:
+          type: string
+          minLength: 1
+          maxLength: 100
+          
+          
