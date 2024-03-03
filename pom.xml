@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<openapi.generator>7.2.0</openapi.generator>
 		<springdoc.version>1.7.0</springdoc.version>
+		<archunit.version>3.0.2</archunit.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -84,6 +85,48 @@
 	</dependencies>
 
 	<build>
+		
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.societegenerale.commons</groupId>
+				    <artifactId>arch-unit-maven-plugin</artifactId>
+				    <version>${archunit.version}</version>
+				    <configuration>
+				        <properties>
+				            <archunit.propertyName>propertyValue</archunit.propertyName>
+				        </properties>
+						<rules>
+							<preConfiguredRules>
+								<rule>com.societegenerale.commons.plugin.rules.NoStandardStreamRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoJunitAssertRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoJodaTimeRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoJavaUtilDateRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoPowerMockRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoPrefixForInterfacesRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoPublicFieldRuleTest</rule>
+								
+								<!-- you may want to use one of the below rules, but not both at same time -->
+								<rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreRuleTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoTestIgnoreWithoutCommentRuleTest</rule>
+				
+								<rule>com.societegenerale.commons.plugin.rules.NoInjectedFieldTest</rule>
+								<rule>com.societegenerale.commons.plugin.rules.NoAutowiredFieldTest</rule>
+							</preConfiguredRules>
+						</rules>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>test</phase>
+							<goals>
+								<goal>arch-test</goal>
+							</goals>
+						</execution>
+					</executions>
+				    
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -101,9 +144,7 @@
 			<plugin>
 			    <groupId>org.openapitools</groupId>
 			    <artifactId>openapi-generator-maven-plugin</artifactId>
-			    <!-- RELEASE_VERSION -->
 			    <version>${openapi.generator}</version>
-			    <!-- /RELEASE_VERSION -->
 			    <executions>
 			        <execution>
 			            <goals>
@@ -127,6 +168,8 @@
 			        </execution>
 			    </executions>
 			</plugin>
+			
+			
 		</plugins>
 	</build>
 
