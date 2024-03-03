@@ -14,7 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CategorizationServiceImpl implements CategorizationService {
 
-	@Autowired Environment env;
 	@Override
 	public MovementCategorizedResource categorize(MovementResource movementResource) {
 		// TODO Auto-generated method stub
