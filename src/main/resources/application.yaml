@@ -14,6 +14,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include:
+        - "*"
           
 openapi:
   categorizer:

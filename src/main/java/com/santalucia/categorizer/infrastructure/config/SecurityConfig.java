@@ -17,8 +17,8 @@ public class SecurityConfig {
 	SecurityFilterChain securityFilterChain(HttpSecurity  httpSecurity) throws Exception {
 		return httpSecurity.authorizeHttpRequests(requests -> 
 			requests.
-				anyRequest().
-				hasAuthority("SCOPE_movements:categorize")
+			    requestMatchers("/management/**").permitAll().
+				anyRequest().hasAuthority("SCOPE_movements:categorize")
 				
 		   ).
 			oauth2ResourceServer(o -> o.jwt()).
