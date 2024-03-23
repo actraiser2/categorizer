@@ -11,6 +11,22 @@ info:
 servers:
   - url: http://localhost:8080
 paths:
+  /movements:
+    get:
+      tags:
+      - Movements
+      operationId: findAllMovements
+      summary: find all movements
+      responses:
+        '200':
+          description: Successful
+          content:
+            'application/json':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movement'
+                
   /movements/categorize:
     post:
       tags:
@@ -38,6 +54,8 @@ paths:
           description: Pet not found
         '422':
           description: Validation exception
+  
+
       
 components:
   schemas:
@@ -56,11 +74,14 @@ components:
         amount:
           type: number
           title: Amount of the movement
-          minimum: 1
         institution:
           type: integer
           title: Identification of the institution
           minimum: 1
+        operationDate:
+          type: string
+          title: OperationDate
+          format: date
     MovementCategorized:
       type: object
       required: 
@@ -81,5 +102,6 @@ components:
           type: string
           minLength: 1
           maxLength: 100
+        
           
           

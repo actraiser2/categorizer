@@ -6,7 +6,14 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:9090/realms/josemi
-          
+  datasource:
+    username: postgres
+    password: fenix000
+    url: jdbc:postgresql://localhost:5432/categorizer
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
           
 openapi:
   categorizer:

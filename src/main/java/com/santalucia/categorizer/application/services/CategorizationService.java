@@ -5,5 +5,5 @@ import com.santalucia.categorizer.application.api.model.MovementResource;
 
 public interface CategorizationService {
 
-	public MovementCategorizedResource categorize(MovementResource movementResource);
+	public MovementCategorizedResource categorize(MovementResource movement);
 }
