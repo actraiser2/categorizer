@@ -1,0 +1,10 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://192.168.1.39:9090/realms/josemi
+          #jwk-set-uri: http://192.168.1.39:9090/realms/josemi/protocol/openid-connect/certs
+          
+  datasource:
+    url: jdbc:postgresql://192.168.1.39:5432/categorizer         

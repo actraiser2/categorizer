@@ -1,0 +1,17 @@
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('aae846d8-51d0-4367-ba71-50ac457354fb', 100.0, 'Transferencia a jose miguel', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('96e39c17-9220-4e08-9240-194bb6d4faab', 100.0, 'Transferencia a jose miguel', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('c0dbe314-7bbe-4315-99e0-157e1f60d048', 100.0, 'Transferencia a jose miguel', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('21a59f84-0a2d-4929-88cf-f08157a263d6', 100.0, 'Transferencia a jose miguel', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('9365f05b-08f5-4241-bedd-967d8a747abf', 100.0, 'Transferencia a jose miguel', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('fa483376-02a0-4f99-90ea-e4abaee2ef95', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('8549ee10-2a97-4a75-9ffd-dd80b6650a80', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('cf0abe27-16a0-4eaf-8163-9a247f68265d', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('014a771d-0a39-409a-9d7b-6e4aa178c122', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('ad8b9b75-80f5-4f85-8575-2c7df74cad53', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('f80429a7-5c4c-4f43-a5ce-081b5e226f89', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('6dc80cb6-362a-419f-85fc-8d6be45698e9', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('5f10970d-3ad1-41f3-8263-6a18fbb9e9b1', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('b541f392-a28a-44a4-9b00-697427d6d0c8', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('f8664bc4-800b-4ea3-82a7-97080482407f', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('476cfdc7-ab22-4444-8e5e-82f9c140a4d6', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);
+INSERT INTO movements (id, amount, concept, institution, operation_date, categorized_movement) VALUES ('1935f6d2-d948-458a-a94d-d9f9d33e667c', -30.0, 'Compra en Mercadona', 10, '2024-03-23', null);

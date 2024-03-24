@@ -26,7 +26,27 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Movement'
-                
+  /movements/{movementId}:
+    get:
+      tags:
+        - Movements
+      operationId: findByMovementId
+      summary: find by identificator
+      parameters:
+        - name: movementId
+          required: true
+          in: path
+          description: Identificador de la cuenta
+          schema:
+            type: string
+      responses:
+        '200':
+           description: Successful
+           content:
+             'application/json':
+               schema:
+                 $ref: '#/components/schemas/Movement'
+      
   /movements/categorize:
     post:
       tags:
@@ -42,7 +62,7 @@ paths:
               $ref: '#/components/schemas/Movement'
           
       responses:
-        '200':
+        '201':
           description: Successful operation
           content:
             application/json:

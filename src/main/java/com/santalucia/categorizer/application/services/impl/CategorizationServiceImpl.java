@@ -45,7 +45,7 @@ public class CategorizationServiceImpl implements CategorizationService {
 			concept(movement.getConcept()).
 			institution(movement.getInstitution()).
 			operationDate(movement.getOperationDate()).
-			id(UUID.randomUUID()).
+			//id(UUID.randomUUID()).
 			categorizedMovement(categorizedMovement).
 			build();
 		

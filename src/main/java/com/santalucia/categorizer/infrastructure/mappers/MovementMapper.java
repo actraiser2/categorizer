@@ -1,6 +1,7 @@
 package com.santalucia.categorizer.infrastructure.mappers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
@@ -13,4 +14,6 @@ import com.santalucia.categorizer.domain.model.MovementEntity;
 public interface MovementMapper {
 
 	List<MovementResource> toListMovementResource(List<MovementEntity> movementList);
+	
+	MovementResource toMovementResource(MovementEntity movement);
 }
