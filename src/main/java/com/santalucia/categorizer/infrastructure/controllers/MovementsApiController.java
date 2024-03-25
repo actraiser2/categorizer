@@ -43,7 +43,7 @@ public class MovementsApiController implements MovementsApi {
 				getContext().getAuthentication();
 		
 		if (authentication != null) {
-			log.info("Authentication: {}", authentication.getTokenAttributes());
+			log.info("Authentication:: {}", authentication.getTokenAttributes());
 			
 			log.info("Authorities: {}", authentication.getAuthorities());
 			log.info("Categorization request {}", movementResource);
