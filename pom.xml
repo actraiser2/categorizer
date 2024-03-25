@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.santalucia</groupId>
 	<artifactId>Categorizer</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>Categorizer</name>
 	<description>Micro para categorizsr movimientos</description>
 	<properties>
