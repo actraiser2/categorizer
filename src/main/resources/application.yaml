@@ -1,4 +1,6 @@
 spring:
+  banner:
+    location: classpath:/METAINF/banner.txt
   application:
     name: categorizer
   security:
