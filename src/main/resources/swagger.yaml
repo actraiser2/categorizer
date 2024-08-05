@@ -13,11 +13,7 @@
       "1.0: (16/04/24) Se añade el catálogo SituacionFamiliar",
       "1.0: (05/04/24) Version inicial"
     ],
-    "x-company-stlc": "SANTALUCIA SEGUROS",
-    "x-dominio": {
-      "schema": {
-        "$ref": "#/components/schemas/desc-dominio"
-      }
+    "x-company-stlc": "SANTALUCIA SEGUROS"
     }
   },
   "servers": [
