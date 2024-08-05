@@ -1,0 +1,3087 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Parametros Personales MDL",
+    "description": "API Crud para acceder a la capa maestro de parametros",
+    "version": "1.0",
+    "contact": {
+      "name": "Alberto Jose Soria Gonzalez",
+      "url": "https://app.swaggerhub.com/apis/santalucia/parametros-personales-mdl/1.0",
+      "email": "albertojose.soriag@santalucia.es"
+    },
+    "x-log": [
+      "1.0: (16/04/24) Se añade el catálogo SituacionFamiliar",
+      "1.0: (05/04/24) Version inicial"
+    ],
+    "x-company-stlc": "SANTALUCIA SEGUROS",
+    "x-dominio": {
+      "schema": {
+        "$ref": "#/components/schemas/desc-dominio"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-cloud-sldev.santalucia.es/mdl/parametros-personales/v1",
+      "description": "Cloud | Sandbox Server"
+    },
+    {
+      "url": "https://api-cloud-sltest.santalucia.es/mdl/parametros-personales/v1",
+      "description": "Cloud | QA Server"
+    },
+    {
+      "url": "https://api-cloud-slpre.santalucia.es/mdl/parametros-personales/v1",
+      "description": "Cloud | Preproduction Server"
+    },
+    {
+      "url": "https://api-cloud.santalucia.es/mdl/parametros-personales/v1",
+      "description": "Cloud | Production Server"
+    }
+  ],
+  "security": [
+    {
+      "oauth": []
+    }
+  ],
+  "paths": {
+    "/estados-civiles": {
+      "get": {
+        "tags": [
+          "Estados Civiles"
+        ],
+        "summary": "Recupera los Estados civiles",
+        "description": "Recupera listado de Estados Civiles conforme a los filtros indicados:\n\n- estCivil.< atributo >, por ej:\n  - estCivil.idEstCivil=1 (identificador de estado civil)",
+        "operationId": "findAllEstadoCivil",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedEstadoCivil"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/estados-civiles/{id}": {
+      "get": {
+        "tags": [
+          "Estados Civiles"
+        ],
+        "summary": "Recupera un Estado civil",
+        "description": "Recupera un Estado civil por ID",
+        "operationId": "findByIdEstadoCivil",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/id"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoCivil"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/estados-civiles/definiciones": {
+      "get": {
+        "tags": [
+          "Estados Civiles"
+        ],
+        "summary": "Recupera listado de definiciones de Estados Civiles",
+        "description": "Recupera listado de definiciones de Estados Civiles conforme a los filtros indicados, siendo requerido al menos el CORE seleccionado para la consulta:\n\n- core.idCore=1 (core requerido)\n- estCivil.< atributo >, por ej:\n  - estCivil.idEstCivil=1 (identificador de estado civil)",
+        "operationId": "findAllEstadoCivilDefinicion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedEstadoCivilDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/estados-civiles/definiciones/{id}": {
+      "get": {
+        "tags": [
+          "Estados Civiles"
+        ],
+        "summary": "Recupera una definición de Estado Civil",
+        "description": "Recupera una definición de Estado Civil por ID",
+        "operationId": "findByIdEstadoCivilDefinicion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idDefinicion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoCivilDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/estados-civiles/traducciones": {
+      "get": {
+        "tags": [
+          "Estados Civiles"
+        ],
+        "summary": "Recupera las traducciones de Estados civiles",
+        "description": "Recupera listado de traducciones de Estados Civiles conforme a los filtros indicados, siendo requerido al menos el IDIOMA seleccionado para la consulta:\n\n- idioma.idIdioma=1 (idioma requerido)\n- estCivil.< atributo >, por ej:\n  - estCivil.idEstCivil=1 (identificador de estado civil)",
+        "operationId": "findAllEstadoCivilTraduccion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedEstadoCivilTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/estados-civiles/traducciones/{id}": {
+      "get": {
+        "tags": [
+          "Estados Civiles"
+        ],
+        "summary": "Recupera una traducción de un Estado Civil",
+        "description": "Recupera una traducción de un Estado Civil por ID",
+        "operationId": "findByIdEstadoCivilTraduccion",
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idTraduccion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstadoCivilTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        },
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ]
+      }
+    },
+    "/sexos": {
+      "get": {
+        "tags": [
+          "Sexos"
+        ],
+        "summary": "Recupera los sexos",
+        "description": "Recupera listado de Sexos conforme a los filtros indicados:\n\n- sexo.< atributo >, por ej:\n  - sexo.idSexo=1 (identificador de sexo)",
+        "operationId": "findAllSexo",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedSexo"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/sexos/{id}": {
+      "get": {
+        "tags": [
+          "Sexos"
+        ],
+        "summary": "Recupera un Sexo",
+        "description": "Recupera un Sexo por ID",
+        "operationId": "findByIdSexo",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/id"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sexo"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/sexos/definiciones": {
+      "get": {
+        "tags": [
+          "Sexos"
+        ],
+        "description": "Recupera listado de definiciones de Sexos conforme a los filtros indicados, siendo requerido al menos el CORE seleccionado para la consulta:\n\n- core.idCore=1 (core requerido)\n- sexo.< atributo >, por ej:\n  - sexo.idSexo=1 (identificador de sexo)",
+        "summary": "Recupera las definiciones de Sexos",
+        "operationId": "findAllSexoDefinicion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedSexoDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/sexos/definiciones/{id}": {
+      "get": {
+        "tags": [
+          "Sexos"
+        ],
+        "summary": "Recupera una definición de un Sexo",
+        "description": "Recupera una definición de un Sexo por ID",
+        "operationId": "findByIdSexoDefinicion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idDefinicion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SexoDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/sexos/traducciones": {
+      "get": {
+        "tags": [
+          "Sexos"
+        ],
+        "summary": "Recupera las traducciones de Sexos",
+        "description": "Recupera listado de traducciones de Sexos conforme a los filtros indicados, siendo requerido al menos el IDIOMA seleccionado para la consulta:\n\n- idioma.idIdioma=1 (idioma requerido)\n- sexo.< atributo >, por ej:\n  - sexo.idSexo=1 (identificador de sexo)",
+        "operationId": "findAllSexoTraduccion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedSexoTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/sexos/traducciones/{id}": {
+      "get": {
+        "tags": [
+          "Sexos"
+        ],
+        "summary": "Recupera una traducción de un Sexo",
+        "description": "Recupera una traducción de un Sexo por ID",
+        "operationId": "findByIdSexoTraduccion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idTraduccion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SexoTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/personas/tipos": {
+      "get": {
+        "tags": [
+          "Personas Tipos"
+        ],
+        "summary": "Recupera los Tipos de Personas",
+        "description": "Recupera listado de Tipos de Personas conforme a los filtros indicados:\n\n- tipoPers.< atributo >, por ej:\n  - tipoPers.idTipoPers=1 (identificador de tipos de personas)",
+        "operationId": "findAllTipoPersona",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTipoPersona"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/personas/tipos/{id}": {
+      "get": {
+        "tags": [
+          "Personas Tipos"
+        ],
+        "summary": "Recupera un Tipo de Persona",
+        "description": "Recupera un Tipo de Persona por ID",
+        "operationId": "findByIdTipoPersona",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/id"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaTipo"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/personas/tipos/definiciones": {
+      "get": {
+        "tags": [
+          "Personas Tipos"
+        ],
+        "summary": "Recupera las definiciones de Tipos de Personas",
+        "description": "Recupera listado de definiciones de Tipos de Personas conforme a los filtros indicados, siendo requerido al menos el CORE seleccionado para la consulta:\n\n- core.idCore=1 (core requerido)\n- tipoPers.< atributo >, por ej:\n  - tipoPers.idTipoPers=1 (identificador de tipos de personas)",
+        "operationId": "findAllTipoPersonaDefinicion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTipoPersonaDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/personas/tipos/definiciones/{id}": {
+      "get": {
+        "tags": [
+          "Personas Tipos"
+        ],
+        "summary": "Recupera una definición de un Tipo de Persona",
+        "description": "Recupera una definición de un Tipo de Persona por ID",
+        "operationId": "findByIdTipoPersonaDefinicion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idDefinicion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaTipoDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/personas/tipos/traducciones": {
+      "get": {
+        "tags": [
+          "Personas Tipos"
+        ],
+        "summary": "Recupera las traducciones de Tipos de Personas",
+        "description": "Recupera listado de traducciones de Tipos de Personas conforme a los filtros indicados, siendo requerido al menos el IDIOMA seleccionado para la consulta:\n\n- idioma.idIdioma=1 (idioma requerido)\n- tipoPers.< atributo >, por ej:\n  - tipoPers.idTipoPers=1 (identificador de tipos de personas)",
+        "operationId": "findAllTipoPersonaTraduccion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTipoPersonaTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/personas/tipos/traducciones/{id}": {
+      "get": {
+        "tags": [
+          "Personas Tipos"
+        ],
+        "summary": "Recupera una traducción de un Tipo de Persona",
+        "description": "Recupera una traducción de un Tipo de Persona por ID",
+        "operationId": "findByIdTipoPersonaTraduccion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idTraduccion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PersonaTipoTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/roles/tipos": {
+      "get": {
+        "tags": [
+          "Roles Tipos"
+        ],
+        "summary": "Recupera los Tipos de Roles",
+        "description": "Recupera listado de Tipos de Roles conforme a los filtros indicados:\n\n- tipoRol.< atributo >, por ej:\n  - tipoRol.idTipoRol=1 (identificador de tipos de roles)",
+        "operationId": "findAllTipoRol",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTipoRol"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/roles/tipos/{id}": {
+      "get": {
+        "tags": [
+          "Roles Tipos"
+        ],
+        "summary": "Recupera un Tipo de Rol",
+        "description": "Recupera un Tipo de Rol por ID",
+        "operationId": "findByIdTipoRol",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/id"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolTipo"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/roles/tipos/definiciones": {
+      "get": {
+        "tags": [
+          "Roles Tipos"
+        ],
+        "summary": "Recupera listado de definiciones de Tipos de Roles",
+        "description": "Recupera listado de definiciones de Tipos de Roles conforme a los filtros indicados, siendo requerido al menos el CORE seleccionado para la consulta:\n\n- core.idCore=1 (core requerido)\n- tipoRol.< atributo >, por ej:\n  - tipoRol.idTipoRol=1 (identificador de tipos de roles)",
+        "operationId": "findAllTipoRolDefinicion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTipoRolDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/roles/tipos/definiciones/{id}": {
+      "get": {
+        "tags": [
+          "Roles Tipos"
+        ],
+        "summary": "Recupera una definición de Tipo de Rol",
+        "description": "Recupera Definición de Tipo de Rol por ID",
+        "operationId": "findByIdTipoRolDefinicion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idDefinicion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolTipoDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/roles/tipos/traducciones": {
+      "get": {
+        "tags": [
+          "Roles Tipos"
+        ],
+        "summary": "Recupera las traducciones de Tipos de Roles",
+        "description": "Recupera listado de traducciones de Tipos de Roles conforme a los filtros indicados, siendo requerido al menos el IDIOMA seleccionado para la consulta:\n\n- idioma.idIdioma=1 (idioma requerido)\n- tipoRol.< atributo >, por ej:\n  - tipoRol.idTipoRol=1 (identificador de tipos de roles)",
+        "operationId": "findAllTipoRolTraduccion",
+        "x-spring-paginated": true,
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedTipoRolTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/roles/tipos/traducciones/{id}": {
+      "get": {
+        "tags": [
+          "Roles Tipos"
+        ],
+        "summary": "Recupera una traducción de un Tipo de Rol",
+        "description": "Recupera una traducción de un Tipo de Rol por ID",
+        "operationId": "findByIdTipoRolTraduccion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idTraduccion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RolTipoTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/situaciones-familiares": {
+      "get": {
+        "tags": [
+          "Situaciones Familiares"
+        ],
+        "summary": "Recupera listado de las situaciones familiares conforme a los filtros indicados",
+        "description": "Recupera listado de las situaciones familiares conforme a los filtros indicados:\n\n- situFam.< atributo >, por ej:\n  - situFam.idSituFam=1 (identificador)",
+        "operationId": "findAllSituacionFamiliar",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/optionalAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedSituacionFamiliar"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        },
+        "x-spring-paginated": true
+      }
+    },
+    "/situaciones-familiares/{id}": {
+      "get": {
+        "tags": [
+          "Situaciones Familiares"
+        ],
+        "summary": "Recupera una Situación familiar",
+        "description": "Recupera una Situación familiar por ID",
+        "operationId": "findByIdSituacionFamiliar",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/id"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SituacionFamiliar"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/situaciones-familiares/definiciones": {
+      "get": {
+        "tags": [
+          "Situaciones Familiares"
+        ],
+        "summary": "Recupera listado de definiciones conforme a los filtros indicados",
+        "description": "Recupera listado de definiciones conforme a los filtros indicados, siendo requerido al menos el CORE seleccionado para la consulta:\n\n- core.idCore=1 (core requerido)\n- situFam.< atributo >, por ej:\n  - situFam.idSituFam=1 (identificador)",
+        "operationId": "findAllSituacionFamiliarDefinicion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedSituacionFamiliarDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        },
+        "x-spring-paginated": true
+      }
+    },
+    "/situaciones-familiares/definiciones/{id}": {
+      "get": {
+        "tags": [
+          "Situaciones Familiares"
+        ],
+        "summary": "Recupera una definición de Situación familiar",
+        "description": "Recupera una definición de Situación familiar por ID",
+        "operationId": "findByIdSituacionFamiliarDefinicion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idDefinicion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SituacionFamiliarDefinicion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    },
+    "/situaciones-familiares/traduccioness": {
+      "get": {
+        "tags": [
+          "Situaciones Familiares"
+        ],
+        "summary": "Recupera listado de traducciones conforme a los filtros indicados",
+        "description": "Recupera listado de traducciones conforme a los filtros indicados, siendo requerido al menos el IDIOMA seleccionado para la consulta:\n\n- idioma.idIdioma=1 (idioma requerido)\n- situFam.< atributo >, por ej:\n  - situFam.idSituFam=1 (identificador)",
+        "operationId": "findAllSituacionFamiliarTraduccion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/page"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/size"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/sort"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/requiredAdvancedFilterParams"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PagedSituacionFamiliarTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        },
+        "x-spring-paginated": true
+      }
+    },
+    "/situaciones-familiares/traduccioness/{id}": {
+      "get": {
+        "tags": [
+          "Situaciones Familiares"
+        ],
+        "summary": "Recupera una traducción de una Situación familiar",
+        "description": "Recupera una traducción de una Situación familiar",
+        "operationId": "findByIdSituacionFamiliarTraduccion",
+        "security": [
+          {
+            "oauth": [
+              "read:parametros-mdl"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/parameters/idTraduccion"
+          },
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/parameters/X-Request-ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SituacionFamiliarTraduccion"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_400"
+          },
+          "401": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_401"
+          },
+          "403": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_403"
+          },
+          "404": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_404"
+          },
+          "409": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_409"
+          },
+          "429": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_429"
+          },
+          "500": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_500"
+          },
+          "502": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_502"
+          },
+          "503": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d5facf16-5d1c-4d22-80da-1136b9b6fcb0/errores-domain-oas3-1,0.json#/components/responses/error_503"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EstadoCivil": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idEstCivil": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "codEstCivil": {
+            "$ref": "#/components/schemas/CodigoEstadoCivil"
+          },
+          "_links": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+          }
+        },
+        "description": "Estado civil"
+      },
+      "EstadoCivilDefinicion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idEstCivilCore": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "estCivil": {
+            "$ref": "#/components/schemas/EstadoCivil"
+          },
+          "codCoreEstCivil": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "example": "M",
+            "description": "Código de definición del Estado Civil"
+          }
+        },
+        "description": "Definición del Estado Civil"
+      },
+      "EstadoCivilTraduccion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idEstCivilIdioma": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "estCivil": {
+            "$ref": "#/components/schemas/EstadoCivil"
+          },
+          "desEstCivil": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "example": "Casado",
+            "description": "Código de traducción del Estado Civil"
+          }
+        },
+        "description": "Traducción del Estado Civil"
+      },
+      "Sexo": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idSexo": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "codSexo": {
+            "$ref": "#/components/schemas/CodigoSexo"
+          },
+          "_links": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+          }
+        },
+        "description": "Sexo"
+      },
+      "SexoDefinicion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idSexoCore": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "sexo": {
+            "$ref": "#/components/schemas/Sexo"
+          },
+          "codCoreSexo": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "example": "V",
+            "description": "Código de la definición"
+          }
+        },
+        "description": "Definición del Sexo"
+      },
+      "SexoTraduccion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idSexoIdioma": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "sexo": {
+            "$ref": "#/components/schemas/Sexo"
+          },
+          "desSexo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "example": "M",
+            "description": "Traducción de idioma del sexo"
+          }
+        },
+        "description": "Traducción del Sexo"
+      },
+      "PersonaTipo": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idTipoPers": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "codTipoPers": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "example": "F",
+            "description": "Código del tipo de persona"
+          },
+          "_links": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+          }
+        },
+        "description": "Tipo de Persona"
+      },
+      "PersonaTipoDefinicion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idTipoPersCore": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "tipoPers": {
+            "$ref": "#/components/schemas/PersonaTipo"
+          },
+          "codCoreTipoPers": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "example": "F",
+            "description": "Código de definición del Tipo de Persona"
+          }
+        },
+        "description": "Definición del tipo de Persona"
+      },
+      "PersonaTipoTraduccion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idTipoPersIdioma": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "tipoPers": {
+            "$ref": "#/components/schemas/PersonaTipo"
+          },
+          "desTipoPers": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "example": "Fisica",
+            "description": "Código de traducción del Tipo de Persona"
+          }
+        },
+        "description": "Traducción del tipo de Persona"
+      },
+      "RolTipo": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idTipoRol": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "codTipoRol": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Código del Tipo de Rol"
+          },
+          "_links": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+          }
+        },
+        "description": "Tipo de rol"
+      },
+      "RolTipoDefinicion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idTipoRolCore": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "tipoRol": {
+            "$ref": "#/components/schemas/RolTipo"
+          },
+          "codCoreTipoRol": {
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "description": "Código de definición del Tipo de Rol"
+          }
+        },
+        "description": "Definición del tipo de rol"
+      },
+      "RolTipoTraduccion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idTipoRolIdioma": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "tipoRol": {
+            "$ref": "#/components/schemas/RolTipo"
+          },
+          "desTipoRol": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "description": "Código de traducción del Tipo de Rol"
+          }
+        },
+        "description": "Traducción del tipo de rol"
+      },
+      "SituacionFamiliar": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idSituFam": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "codSituFam": {
+            "$ref": "#/components/schemas/CodigoSituacionFamiliar"
+          }
+        },
+        "description": "Situación familiar"
+      },
+      "SituacionFamiliarDefinicion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idSituFamCore": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "codCoreSituFam": {
+            "$ref": "#/components/schemas/CodigoSituacionFamiliar"
+          }
+        },
+        "description": "Definición de la situación familiar"
+      },
+      "SituacionFamiliarTraduccion": {
+        "type": "object",
+        "properties": {
+          "createdByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioCreacion"
+          },
+          "lastModifiedByUser": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/UsuarioUltimaModificacion"
+          },
+          "createdDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaCreacion"
+          },
+          "lastModifiedDate": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaUltimaModificacion"
+          },
+          "fecInicioVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaInicioVigencia"
+          },
+          "fecFinVigencia": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/FechaFinVigencia"
+          },
+          "etagVersion": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Etag"
+          },
+          "idSituFamIdioma": {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Identificador"
+          },
+          "desSituFam": {
+            "$ref": "#/components/schemas/DescripcionSituacionFamiliar"
+          }
+        },
+        "description": "Traducción de Situación familiar"
+      },
+      "PagedSexo": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "sexos": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Sexo"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion del sexo"
+      },
+      "PagedSexoTraduccion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "sexos-idiomas": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SexoTraduccion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la traduccion del sexo"
+      },
+      "PagedSexoDefinicion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "sexos-cores": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SexoDefinicion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la definicion del sexo"
+      },
+      "PagedEstadoCivil": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "estados-civiles": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EstadoCivil"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion del estado civil"
+      },
+      "PagedEstadoCivilDefinicion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "estados-civiles-cores": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EstadoCivilDefinicion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la definicion del estado civil"
+      },
+      "PagedEstadoCivilTraduccion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "estados-civiles-idiomas": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/EstadoCivilTraduccion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la traduccion del estado civil"
+      },
+      "PagedTipoPersona": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "tipos-personas": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PersonaTipo"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion del tipo de persona"
+      },
+      "PagedTipoPersonaTraduccion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "tipos-personas-idiomas": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PersonaTipoTraduccion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la traduccion del tipo persona"
+      },
+      "PagedTipoPersonaDefinicion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "tipos-personas-cores": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/PersonaTipoDefinicion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la definicion del tipo de persona"
+      },
+      "PagedTipoRol": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "tipos-roles": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RolTipo"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion del tipo de rol"
+      },
+      "PagedTipoRolTraduccion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "tipos-roles-idiomas": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RolTipoTraduccion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la traduccion del tipo rol"
+      },
+      "PagedTipoRolDefinicion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "tipos-roles-cores": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RolTipoDefinicion"
+                    }
+                  }
+                }
+              },
+              "_links": {
+                "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/934bdd2e-ab49-4cb9-ad44-7b3ce0331688/mdl-domain-1,0.json#/components/schemas/Links"
+              }
+            }
+          }
+        ],
+        "description": "Paginacion de la definicion del tipo de rol"
+      },
+      "PagedSituacionFamiliar": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SituacionFamiliar"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "PagedSituacionFamiliarDefinicion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SituacionFamiliarDefinicion"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "PagedSituacionFamiliarTraduccion": {
+        "allOf": [
+          {
+            "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/d43cca2b-c9dc-4ca5-89a6-21719e434280/common-domain-1,0.json#/components/schemas/PaginatedResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "_embedded": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/SituacionFamiliarTraduccion"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "CodigoSexo": {
+        "maxLength": 20,
+        "minLength": 0,
+        "type": "string",
+        "example": "M",
+        "description": "Código del sexo"
+      },
+      "CodigoEstadoCivil": {
+        "maxLength": 20,
+        "minLength": 0,
+        "type": "string",
+        "example": "CA",
+        "description": "Código de Estado Civil"
+      },
+      "CodigoSituacionFamiliar": {
+        "maxLength": 100,
+        "minLength": 0,
+        "type": "string",
+        "description": "Código de la situacion familiar",
+        "example": "1"
+      },
+      "DescripcionSituacionFamiliar": {
+        "maxLength": 255,
+        "minLength": 0,
+        "type": "string",
+        "description": "Traduccion literal de la situacion familiar",
+        "example": "Soltero/viudo/divorc. hijos < 18 o > con"
+      },
+      "desc-dominio": {
+        "$ref": "https://api-gateway.apiquality.io/api_apiquality/v1/models/2bf4876d-59d9-4b76-b717-2c549a1a9621/dominio-funcional-domain-2,2.json#/definitions/mdl"
+      }
+    },
+    "securitySchemes": {
+      "oauth": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://sso-sldev.santalucia.es/auth/realms/stl-int-mdl/protocol/openid-connect/token",
+            "scopes": {
+              "read:parametros-mdl": "Permiso de lectura sobre servicios safe (Get)",
+              "write:parametros-mdl": "Permiso de escritura sobre escritura Safe (Post, Put, Delete, Patch)",
+              "read-dynamic:parametros-mdl": "Permiso de lectura sobre servicios safe (Get)"
+            }
+          }
+        }
+      }
+    }
+  }
+}
