@@ -13,7 +13,6 @@ import com.santalucia.categorizer.domain.model.CategorizedMovementEntity;
 import com.santalucia.categorizer.domain.model.MovementEntity;
 import com.santalucia.categorizer.infrastructure.repository.MovementRepository;
 
-import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,7 +28,8 @@ public class CategorizationServiceImpl implements CategorizationService {
 	@PreAuthorize("hasAuthority('SCOPE_movements:categorize')")
 	public MovementCategorizedResource categorize(MovementResource movement) {
 		log.info("Request categorization " + movement);
-		
+
+		org.springframework.boot.loader.launch.JarLauncher a = null;
 		var response = new MovementCategorizedResource();
 		response.setCategory(10);
 		response.setCategoryName("Alimentacion");

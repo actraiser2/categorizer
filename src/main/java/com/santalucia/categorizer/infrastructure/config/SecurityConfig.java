@@ -29,13 +29,15 @@ public class SecurityConfig {
 				requests.
 				    requestMatchers(new AntPathRequestMatcher("/management/**")).
 				    	permitAll().
+				    requestMatchers(new AntPathRequestMatcher("/users/**")).
+				    	permitAll().
 					anyRequest().
 						hasAuthority("ROLE_movements:categorize")
 				
 		   ).
 			oauth2ResourceServer(o -> 
 				o.jwt(c -> c.jwtAuthenticationConverter(getJwtAuthenticationConverter()))).
-			csrf(c -> c.ignoringRequestMatchers(new AntPathRequestMatcher("/ggategorizer/v1/**"))).
+			csrf(c -> c.disable()).
 			cors(c -> c.disable()).
 			build();
 		

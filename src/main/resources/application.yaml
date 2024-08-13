@@ -18,6 +18,13 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  data:
+    mongodb:
+      host: localhost
+      username: jmbesada
+      password: fenix000
+      database: recibosDB
+      authentication-database: admin
 management:
   endpoints:
     web:

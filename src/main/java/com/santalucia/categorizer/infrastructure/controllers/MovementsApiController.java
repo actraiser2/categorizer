@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,6 +35,7 @@ public class MovementsApiController implements MovementsApi {
 	private final MovementRepository movementRepository;
 	private final MovementMapper movementMapper;
 	private final PasswordEncoder passwordEncoder;
+	private final MongoTemplate mongoTemplate;
 
 	@Override
 	public ResponseEntity<MovementCategorizedResource> categorizeMovement(
