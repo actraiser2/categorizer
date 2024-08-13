@@ -29,7 +29,6 @@ public class CategorizationServiceImpl implements CategorizationService {
 	public MovementCategorizedResource categorize(MovementResource movement) {
 		log.info("Request categorization " + movement);
 
-		org.springframework.boot.loader.launch.JarLauncher a = null;
 		var response = new MovementCategorizedResource();
 		response.setCategory(10);
 		response.setCategoryName("Alimentacion");
